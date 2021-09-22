@@ -5,6 +5,21 @@ date: "9/29/2021"
 output: github_document
 ---
 
-```{r setup, include=FALSE}
-
+```{r setup}
+library(tidyverse)
 ```
+
+## Problem 1
+```{r}
+set.seed(1)
+
+prob1_df <- tibble(
+  ran_sample = rnorm(10),
+  greater_than_0 = case_when(
+      ran_sample > 0 ~ "greater than 0",
+      ran_sample < 0 ~ "less than 0"),
+  vec_char = c("well", "plug", "me", "in", "just", "like", "I", "was", "Eddie", "Harris"),
+  vec_factor = factor(c("Ad-Rock", "MCA", "Mike D", "MCA", "MCA", "Ad-Rock", "MCA", "Mike D", "Mike D", "MCA"))
+)
+```
+
