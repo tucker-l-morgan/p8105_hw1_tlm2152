@@ -45,3 +45,12 @@ as.numeric(pull(prob1_df, "vec_factor"))
 When I run each line of code, I find that R converts the logical vector into numbers where TRUE = 1 and FALSE = 0. This makes sense as the logical vector returns only two values. However, the character vector is converted to NAs for each entry. It doesn't make much sense for R to convert these words to numbers, since they don't have as clear of a numeric meaning as TRUE / FALSE. That explains why I could find the mean of the logical vector but not the character vector above.
 
 The factor vector entries are converted into 1, 2, or 3 depending on factor level. I can even find the mean of this numeric vector to be `r mean(as.numeric(pull(prob1_df, "vec_factor")))`. One could infer that this means "MCA" (level 2) and "Mike D" (level 3) appear more frequently in this list, but a frequency table may be more informative in this case.
+
+
+## Problem 2
+I'll start by loading the `penguins` data set.
+```{r}
+data("penguins", package = "palmerpenguins")
+penguins
+```
+This data set contains info on `r nrow(penguins)` sample penguins for `r ncol(penguins)` attributes: `r names(penguins)`. Penguins are classified as 1 of 3 species - `r levels(pull(penguins, species))` - and from 1 of 3 islands - `r levels(pull(penguins, island))`. Bill length can range from `r min(pull(penguins, bill_length_mm), na.rm = TRUE)`mm to `r max(pull(penguins, bill_length_mm), na.rm = TRUE)`mm, while bill depth can range from `r min(pull(penguins, bill_depth_mm), na.rm = TRUE)`mm to `r max(pull(penguins, bill_depth_mm), na.rm = TRUE)`mm. Flipper length ranges from `r min(pull(penguins, flipper_length_mm), na.rm = TRUE)`mm to `r max(pull(penguins, flipper_length_mm), na.rm = TRUE)`mm with a mean of `r round(mean(pull(penguins, flipper_length_mm), na.rm = TRUE),2)`mm.
